@@ -17,7 +17,35 @@ let itemSchema = new mongoose.Schema({
   }
 });
 
+itemSchema.statics.makeOne = (reqObj, cb) => {
+  Item.create(reqObj, (err, newItem)=> {
+    if(err) return cb(err);
+    Item.find(newItem._id, (err, savedItem)=> {
+      err ? cb(err) : cb(null, savedItem);
+    });
+  });
+};
 
+itemSchema.statics.getOne = (reqId, cb) => {
+  Item.findById(reqId, (err, dbItem)=> {
+    err ? cb(err) : cb(null, dbItem);
+  });
+};
+
+itemSchema.statics.removeOne = (reqId, cb) => {
+  Item.findByIdAndRemove(reqId, (err, oldItem) => {
+    err ? cb(err) : cb(null, {SUCCESS: `Item: ${oldItem} has been removed.`});
+  });
+};
+
+itemSchema.statics.updateOne = (editObj, cb) => {
+  Item.findByIdAndUpdate(editObj.id, {$set : editObj.body}, (err, oldDbItem)=> {
+    if(err) return cb(err);
+    Item.findById(oldDbItem._id, (err, savedItem)=> {
+      err ? cb(err) : cb(null, savedItem);
+    });
+  });
+};
 
 
 
