@@ -10,15 +10,18 @@ let itemSchema = new mongoose.Schema({
   },
   value   :   {
     type    :     Number
-  },
-  room    :   {
-    type    :     ObjectId,
-    ref     :     'Room'
   }
+  // room    :   {
+  //   type    :     ObjectId,
+  //   ref     :     'Room'
+  // }
 });
 
 itemSchema.statics.makeOne = (reqObj, cb) => {
+  console.log("reqObj: ", reqObj);
   Item.create(reqObj, (err, newItem)=> {
+    console.log('err: ', err);
+    console.log('newItem: ', newItem);
     if(err) return cb(err);
     Item.find(newItem._id, (err, savedItem)=> {
       err ? cb(err) : cb(null, savedItem);
