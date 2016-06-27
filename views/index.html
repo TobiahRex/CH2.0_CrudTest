@@ -7,83 +7,88 @@
 
   <span class="title">
     <title>
-        <!-- CHANGE ME -->
+      Property App Test
     </title>
   </span>
 
   <span class="links">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/assets/bootswatch-cyborg.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/assets/animate.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" media="screen" title="no title">
     <!-- SweetAlert.css -->
     <link rel="stylesheet" href="/bower_components/sweetalert/dist/sweetalert.css">
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
   </span>
   <!-- /////////////// -->
   <span class="scripts">
     <!-- Angular -->
-    <script src="/bower_components/angular/angular.min.js" charset="utf-8"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" charset="utf-8"></script>
-    <script src="/bower_components/angular-socket-io/socket.min.js" charset="utf-8"></script>
-    <script src="/bower_components/socket.io-client/socket.io.js" charset="utf-8"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <!-- angular UI-Bootstrap -->
-    <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js" charset="utf-8"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 
     <!-- Jquery (for Bootstrap) -->
-    <script src="/bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- SweetAlert -->
     <script src="/bower_components/ngSweetAlert/SweetAlert.min.js"></script>
     <script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="" charset="utf-8"></script>
+
 
     <!-- Modules, Controllers, Services -->
-    <script src="/js/module.js" charset="utf-8"></script>
-    <script src="/js/services.js" charset="utf-8"></script>
-    <script src="/js/controllers.js" charset="utf-8"></script>
-    <script src="/js/factories.js" charset="utf-8"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/module.js"></script>
+    <script src="/js/services/itemServices.js"></script>
+    <script src="/js/services/roomServices.js"></script>
+    <script src="/js/controllers/homeController.js"></script>
+    <script src="/js/controllers/mainController.js"></script>
+    <script src="/js/controllers/splashController.js"></script>
+
   </span>
 
 </head>
 
-<body ng-app="frontEnd_template">
+<body ng-app="propertyApp">
 
   <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">TOGGLE NAV</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" ui-sref="home">Home</a>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-toggle='collapse' data-target="#collapse-nav">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="signature-nav navbar-brand"> <span class="text-primary">by</span><a class='to-splash' ui-sref='splash'> Tobiah Rex</a></span>
+          <u class="nav navbar-nav navbar-left">
+
+            <li class="active"> <a ui-sref='home'>Property Managaer</a> </li>
+          </u>
+        </div>
+        <div class="collapse navbar-collapse" id='collapse-nav'>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a ui-sref='property'>Property</a></li>
+            <li class="active"><a ui-sref='items'>Items</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-
-          <li><a ui-sref=" templateLogin ">TEMPLATE LOGIN #1</a></li>
-          <li><a ui-sref=" templateRegister ">TEMPLATE REGISTER #2</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+    </nav>
   <div class="template-header text-center">
-    <i style="color : red" class="fa fa-cog fa-spin fa-5x fa-fw margin-bottom"></i>
-    <br>
-    <h3 class="text-center" style="color : Red ">Front End Template</h3>
+    <!-- <i style="color : red" class="fa fa-cog fa-spin fa-5x fa-fw margin-bottom"></i> -->
+    
+
   </div>
   <hr>
   <div class="container">
     <ui-view>
-        <h1 style="color : red" class="text-center jumbotron">
-          " / "
-        </h1>
+      <h1 style="color : red" class="text-center jumbotron">
+        " / "
+      </h1>
       <!-- TEMPLATES -->
     </ui-view>
   </div>
